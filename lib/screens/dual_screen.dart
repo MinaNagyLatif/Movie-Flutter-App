@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_shop/screens/exam_screen.dart';
-import 'package:my_shop/screens/video_screen.dart';
+import 'package:JC/screens/exam_screen.dart';
+import 'package:JC/screens/video_screen.dart';
 
 class AllContent extends StatefulWidget {
   static const routeName = '/dual';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:my_shop/screens/auth_screen.dart';
-import 'package:my_shop/screens/parents_mode_screen.dart';
+import 'package:JC/screens/auth_screen.dart';
+import 'package:JC/screens/parents_mode_screen.dart';
 
 
 class MyDrawer extends StatefulWidget {

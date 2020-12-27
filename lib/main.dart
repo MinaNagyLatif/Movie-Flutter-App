@@ -2,21 +2,21 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:my_shop/screens/auth_screen.dart';
-import 'package:my_shop/screens/dual_screen.dart';
-import 'package:my_shop/screens/english.dart';
-import 'package:my_shop/screens/examsandvideos/dual2.dart';
-import 'package:my_shop/screens/examsandvideos/duel3.dart';
-import 'package:my_shop/screens/examsandvideos/duel5.dart';
-import 'package:my_shop/screens/examsandvideos/duel6.dart';
-import 'package:my_shop/screens/examsandvideos/duel7.dart';
-import 'package:my_shop/screens/examsandvideos/yarab.dart';
-import 'package:my_shop/screens/french.dart';
-import 'package:my_shop/screens/parents_mode_screen.dart';
-import 'package:my_shop/screens/home_screen.dart';
-import 'package:my_shop/providers/user_provider.dart';
+import 'package:JC/screens/auth_screen.dart';
+import 'package:JC/screens/dual_screen.dart';
+import 'package:JC/screens/english.dart';
+import 'package:JC/screens/examsandvideos/dual2.dart';
+import 'package:JC/screens/examsandvideos/duel3.dart';
+import 'package:JC/screens/examsandvideos/duel5.dart';
+import 'package:JC/screens/examsandvideos/duel6.dart';
+import 'package:JC/screens/examsandvideos/duel7.dart';
+import 'package:JC/screens/examsandvideos/yarab.dart';
+import 'package:JC/screens/french.dart';
+import 'package:JC/screens/parents_mode_screen.dart';
+import 'package:JC/screens/home_screen.dart';
+import 'package:JC/providers/user_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:my_shop/screens/splash_screen.dart';
+import 'package:JC/screens/splash_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,20 +37,21 @@ class MyApp extends StatelessWidget {
           fontFamily: 'MontserratAlternates',
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: HomeScreen(),//FutureBuilder(
-            //future: _initialization,
-            //builder: (context, snapshot) {
-              //if (snapshot.connectionState == ConnectionState.waiting) {
-                //return SplashScreen();
-              //} else {
-               //if (FirebaseAuth.instance.currentUser != null) {
-                 // return HomeScreen();
-                //} else {
-                  //return AuthScreen();
-               //}
-              //}
-            //}),
+        home: FutureBuilder(
+            future: _initialization,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return SplashScreen();
+              } else {
+               if (FirebaseAuth.instance.currentUser != null) {
+                  return HomeScreen();
+                } else {
+                  return AuthScreen();
+               }
+              }
+            }),
         routes: {
+
           HomeScreen.routeName: (context) => HomeScreen(),
           AuthScreen.routeName: (context) => AuthScreen(),
           ParentsMode.routeName: (context) => ParentsMode(),

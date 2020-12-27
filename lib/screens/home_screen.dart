@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_shop/screens/exam_screen.dart';
-import 'package:my_shop/widgets/cards.dart';
-import 'package:my_shop/widgets/my_drawer.dart';
+import 'package:JC/screens/exam_screen.dart';
+import 'package:JC/widgets/cards.dart';
+import 'package:JC/widgets/my_drawer.dart';
 import 'dart:io';
 var x;
 class HomeScreen extends StatelessWidget {

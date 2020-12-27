@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:my_shop/screens/dual_screen.dart';
-import 'package:my_shop/screens/examsandvideos/dual2.dart';
-import 'package:my_shop/screens/examsandvideos/duel3.dart';
-import 'package:my_shop/screens/examsandvideos/duel5.dart';
-import 'package:my_shop/screens/examsandvideos/duel6.dart';
-import 'package:my_shop/screens/examsandvideos/duel7.dart';
-import 'package:my_shop/screens/examsandvideos/yarab.dart';
-import 'package:my_shop/screens/video_screen.dart';
+import 'package:JC/screens/dual_screen.dart';
+import 'package:JC/screens/examsandvideos/dual2.dart';
+import 'package:JC/screens/examsandvideos/duel3.dart';
+import 'package:JC/screens/examsandvideos/duel5.dart';
+import 'package:JC/screens/examsandvideos/duel6.dart';
+import 'package:JC/screens/examsandvideos/duel7.dart';
+import 'package:JC/screens/examsandvideos/yarab.dart';
+import 'package:JC/screens/video_screen.dart';
 
 class CardContent extends StatelessWidget {
   String title, sub;

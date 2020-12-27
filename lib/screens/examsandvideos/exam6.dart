@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:my_shop/screens/home_screen.dart';
+import 'package:JC/screens/home_screen.dart';
 import 'package:audioplayers/audio_cache.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -24,9 +24,9 @@ class AnimalQuiz{
 
 
   var choices = [
-    ["the owner of the farm","Joseph","The King","virgin merry's father"],
-    ["Manger", "virgin merry's house", "kings palace", "Joseph's house"],
-    ["soldiers", "farmers", "the King and his family", "the wise men"],
+    ["Joseph","The King"],
+    ["Manger", "kings palace",],
+    [ "farmers", "the wise men"],
   ];
 
 
@@ -143,47 +143,7 @@ class Quiz1State extends State<Quiz6> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
 
-                    //button 3
-                    new MaterialButton(
-                      minWidth: 120.0,
-                      color: Colors.blueGrey,
-                      onPressed: (){
-
-                        if(quiz.choices[questionNumber][2] == quiz.correctAnswers[questionNumber]){
-                          debugPrint("Correct");
-                          finalScore++;
-                        }else{
-                          debugPrint("Wrong");
-                        }
-                        updateQuestion();
-                      },
-                      child: new Text(quiz.choices[questionNumber][2],
-                        style: new TextStyle(
-                            fontSize: 20.0,
-                            color: Colors.white
-                        ),),
-                    ),
-
-                    //button 4
-                    new MaterialButton(
-                      minWidth: 120.0,
-                      color: Colors.blueGrey,
-                      onPressed: (){
-
-                        if(quiz.choices[questionNumber][3] == quiz.correctAnswers[questionNumber]){
-                          debugPrint("Correct");
-                          finalScore++;
-                        }else{
-                          debugPrint("Wrong");
-                        }
-                        updateQuestion();
-                      },
-                      child: new Text(quiz.choices[questionNumber][3],
-                        style: new TextStyle(
-                            fontSize: 20.0,
-                            color: Colors.white
-                        ),),
-                    ),
+                    
 
                   ],
                 ),
@@ -197,13 +157,13 @@ class Quiz1State extends State<Quiz6> {
                     onPressed: (){
                       if (questionNumber == 0) {
                         final player = AudioCache();
-                        player.play('21.m4a');
+                        player.play('21.opus');
                       }else if (questionNumber == 1){
                         final player = AudioCache();
-                        player.play('22.m4a');
+                        player.play('22.opus');
                       }else if (questionNumber == 2){
                         final player = AudioCache();
-                        player.play('23.m4a');
+                        player.play('23.opus');
                       }
                     })
                 ),

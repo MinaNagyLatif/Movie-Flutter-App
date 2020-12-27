@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:my_shop/screens/exam_screen.dart';
-import 'package:my_shop/screens/examsandvideos/exam2.dart';
-import 'package:my_shop/screens/examsandvideos/video2.dart';
-import 'package:my_shop/screens/examsandvideos/video3.dart';
-import 'package:my_shop/screens/video_screen.dart';
+import 'package:JC/screens/exam_screen.dart';
+import 'package:JC/screens/examsandvideos/exam2.dart';
+import 'package:JC/screens/examsandvideos/video2.dart';
+import 'package:JC/screens/examsandvideos/video3.dart';
+import 'package:JC/screens/video_screen.dart';
 
 import 'exam3.dart';
 

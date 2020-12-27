@@ -1,10 +1,10 @@
 import 'dart:developer';
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:my_shop/screens/english.dart';
-import 'package:my_shop/screens/french.dart';
-import 'package:my_shop/screens/home_screen.dart';
-import 'package:my_shop/widgets/cards.dart';
+import 'package:JC/screens/english.dart';
+import 'package:JC/screens/french.dart';
+import 'package:JC/screens/home_screen.dart';
+import 'package:JC/widgets/cards.dart';
 import 'package:flutter/src/widgets/sliver.dart';
 
 

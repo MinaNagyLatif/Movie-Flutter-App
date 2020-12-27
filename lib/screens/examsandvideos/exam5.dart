@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:my_shop/screens/home_screen.dart';
+import 'package:JC/screens/home_screen.dart';
 import 'package:audioplayers/audio_cache.dart';
 import 'package:path_provider/path_provider.dart';
 

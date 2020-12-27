@@ -1,4 +1,4 @@
-import 'package:my_shop/screens/home_screen.dart';
+import 'package:JC/screens/home_screen.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'package:flutter/material.dart';
 

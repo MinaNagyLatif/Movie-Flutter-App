@@ -1,8 +1,8 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:my_shop/screens/home_screen.dart';
-import 'package:my_shop/widgets/auth_widgets/auth_title.dart';
-import 'package:my_shop/providers/user_provider.dart';
+import 'package:JC/screens/home_screen.dart';
+import 'package:JC/widgets/auth_widgets/auth_title.dart';
+import 'package:JC/providers/user_provider.dart';
 import 'package:provider/provider.dart';
 
 class AuthForm extends StatefulWidget {
