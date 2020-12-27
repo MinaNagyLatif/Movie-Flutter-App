@@ -1,81 +1,141 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:roovies/models/tmdb_handler.dart';
-import 'package:roovies/providers/genres_provider.dart';
-import 'package:roovies/providers/movies_provider.dart';
-import 'package:roovies/providers/persons_provider.dart';
-import 'package:roovies/widgets/movies_by_genre.dart';
-import 'package:roovies/widgets/now_playing.dart';
-import 'package:roovies/widgets/trending_movies.dart';
-import 'package:roovies/widgets/trending_persons.dart';
-
-class HomeScreen extends StatefulWidget {
-  @override
-  _HomeScreenState createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  bool firstRun, successful;
-  @override
-  void initState() {
-    super.initState();
-    firstRun = true;
-    successful = false;
-  }
-
-  @override
-  void didChangeDependencies() async {
-    super.didChangeDependencies();
-    if (firstRun) {
-      //await Provider.of<MoviesProvider>(context, listen: false).fetchNowPlaying();
-
-      List<bool> results = await Future.wait([
-        context.read<MoviesProvider>().fetchNowPlaying(),
-        context.read<GenresProvider>().fetchGenres(),
-        context.read<PersonsProvider>().fetchTrendingPersons(),
-        context.read<MoviesProvider>().fetchTrendingMovies()
-      ]);
-      setState(() {
-        firstRun = false;
-        successful = !results.any((element) => element == false);
-      });
-    }
-  }
-
+import 'package:my_shop/screens/exam_screen.dart';
+import 'package:my_shop/widgets/cards.dart';
+import 'package:my_shop/widgets/my_drawer.dart';
+import 'dart:io';
+var x;
+class HomeScreen extends StatelessWidget {
+ cardContent(x){
+   
+ }
+  static const routeName = '/home';
+  
   @override
   Widget build(BuildContext context) {
-    TMDBHandler.instance.getNowPlaying();
-    return Scaffold(
+    
+    return Scaffold(drawer: MyDrawer(),
       appBar: AppBar(
         centerTitle: true,
-        leading: IconButton(
-          icon: Icon(Icons.dehaze),
-          onPressed: () {},
-        ),
-        title: Text('Roovies'),
+        title: Text('اولاد يسوع'),
         actions: [
-          IconButton(icon: Icon(Icons.search), onPressed: () {}),
+          IconButton(
+          icon: Icon(Icons.search), 
+          onPressed: (){
+            showSearch(context: context, delegate: DataSearch());
+          }
+          )
         ],
       ),
-      body: (firstRun)
-          ? Center(child: CircularProgressIndicator())
-          : (successful)
-              ? ListView(
-                  children: [
-                    NowPlaying(),
-                    MoviesByGenre(),
-                    TrendingPersons(),
-                    TrendingMovies(),
-                  ],
-                )
-              : Center(
-                  child: Text(
-                    'Error has occured',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
+      body:
+  
+        ListView(
+          
+          children: [
+            Container(
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height *0.1,
+              margin: new EdgeInsets.all(25),
+              child: Center(child: 
+              Text('مغامرة فى الكتاب القدس',
+               style:
+                TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25,
                   ),
-                ),
+               )
+              ),
+            ),
+            CardContent(title: 'الخليقة',x: 1,),
+            CardContent(title: 'الابن الضال',x: 2 ,),
+            CardContent(title: 'السامرى',x: 3,),
+            CardContent(title: 'الميلاد', x: 4,),
+            CardContent(title: 'نوح', x: 5,),
+            
+          ],
+        ),
+      
+                
     );
+    
   }
+}
+
+class DataSearch extends SearchDelegate<String>{
+  DataSearch({
+    String hintText = "search",
+  }) : super(
+          searchFieldLabel: hintText,
+          keyboardType: TextInputType.text,
+          textInputAction: TextInputAction.search,
+        );
+  final lessons =  ["الابن_الضال","السامرى_الصالح","الخليقة", "القيامة","نوح","الميلاد"];
+  final sug = ['الابن الضال'];
+  @override
+  List<Widget> buildActions(BuildContext context) {
+      return[
+        IconButton(
+          icon: Icon(Icons.clear), 
+          onPressed: (){
+            query = '';
+          })
+          ];
+    }
+  
+    @override
+    Widget buildLeading(BuildContext context) {
+      return IconButton(icon: AnimatedIcon(
+        icon: AnimatedIcons.menu_arrow, progress: transitionAnimation), 
+        onPressed: (){
+          close(context, null);
+        } 
+      ); 
+    }
+  
+    @override
+    Widget buildResults(BuildContext context) {
+      if (query == 'الابن_الضال') {
+        return CardContent(title: 'الابن الضال',x: 2 ,);
+      }else if (query == 'السامرى_الصالح' ){
+        return CardContent(title: 'السامرى',x: 3,);
+      }else if (query == 'الخليقة' ){
+        return CardContent(title: 'الخليقة',x: 1,);
+      }else if (query == 'نوح' ){
+        return CardContent(title: 'نوح', x: 5,);
+      }else if (query == 'الميلاد' ){
+        return CardContent(title: 'الميلاد', x: 4,);
+      }else{
+        return Center(
+          child: Container(
+            padding: new EdgeInsets.all(8),
+            child: Text('يرجى كتابة اسم الدرس كامل كما هو موضح بالاختيارات', 
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
+            textAlign: TextAlign.center,
+            ),
+          ),
+        );
+      }
+      
+    }
+  
+    @override
+    Widget buildSuggestions(BuildContext context) {
+      final suggest = lessons.where((element) => element.startsWith(query)).toList();
+      
+
+      return ListView.builder(
+        itemCount: suggest.length,
+        itemBuilder: (context,index) =>ListTile(
+          onTap: (){
+            query = suggest[index];
+            showResults(context);
+          },
+          leading: Icon(Icons.book),
+          title: Text(suggest[index])
+        ),
+        );
+  }
+
 }

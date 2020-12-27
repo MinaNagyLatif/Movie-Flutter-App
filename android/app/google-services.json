@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "53543725259",
+    "project_id": "with-jesus",
+    "storage_bucket": "with-jesus.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:53543725259:android:253b6f969ea50e923ad34e",
+        "android_client_info": {
+          "package_name": "com.example.hve"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "53543725259-nii6v71gp2dquckiqugs2719m0t8mmlr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDbiQMod-nBo2bgp5MRBieRP9lGGJec5Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "53543725259-nii6v71gp2dquckiqugs2719m0t8mmlr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

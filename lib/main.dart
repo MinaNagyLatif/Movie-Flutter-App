@@ -1,50 +1,70 @@
+
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:my_shop/screens/auth_screen.dart';
+import 'package:my_shop/screens/dual_screen.dart';
+import 'package:my_shop/screens/english.dart';
+import 'package:my_shop/screens/examsandvideos/dual2.dart';
+import 'package:my_shop/screens/examsandvideos/duel3.dart';
+import 'package:my_shop/screens/examsandvideos/duel5.dart';
+import 'package:my_shop/screens/examsandvideos/duel6.dart';
+import 'package:my_shop/screens/examsandvideos/duel7.dart';
+import 'package:my_shop/screens/examsandvideos/yarab.dart';
+import 'package:my_shop/screens/french.dart';
+import 'package:my_shop/screens/parents_mode_screen.dart';
+import 'package:my_shop/screens/home_screen.dart';
+import 'package:my_shop/providers/user_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:roovies/helpers/constants.dart';
-import 'package:roovies/providers/genres_provider.dart';
-import 'package:roovies/providers/movies_provider.dart';
-import 'package:roovies/providers/persons_provider.dart';
-import 'package:roovies/screens/home_screen.dart';
-import 'package:roovies/screens/movie_details_screen.dart';
+import 'package:my_shop/screens/splash_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (context) => MoviesProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => GenresProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => PersonsProvider(),
-        ),
-      ],
+    return ChangeNotifierProvider(
+      create: (context) => UserProvider(),
       child: MaterialApp(
-        title: 'Roovies',
+        title: 'MyShop',
         theme: ThemeData(
-          primarySwatch: Constants.color,
-          accentColor: Color.fromRGBO(244, 193, 15, 1),
-          fontFamily: 'Poppins',
-          scaffoldBackgroundColor: Constants.color,
-          textTheme: TextTheme(
-            headline6: TextStyle(
-              color: Colors.blueGrey,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          primaryColor: Colors.white,
+          accentColor: Colors.black,
+          fontFamily: 'MontserratAlternates',
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: HomeScreen(),
+        home: HomeScreen(),//FutureBuilder(
+            //future: _initialization,
+            //builder: (context, snapshot) {
+              //if (snapshot.connectionState == ConnectionState.waiting) {
+                //return SplashScreen();
+              //} else {
+               //if (FirebaseAuth.instance.currentUser != null) {
+                 // return HomeScreen();
+                //} else {
+                  //return AuthScreen();
+               //}
+              //}
+            //}),
         routes: {
-          MovieDetailsScreen.routeName: (context) => MovieDetailsScreen(),
+          HomeScreen.routeName: (context) => HomeScreen(),
+          AuthScreen.routeName: (context) => AuthScreen(),
+          ParentsMode.routeName: (context) => ParentsMode(),
+          AllContent.routeName: (context)=> AllContent(),
+          AllContent2.routeName: (context)=> AllContent2(),
+          AllContent3.routeName: (context)=> AllContent3(),
+          AllContent4.routeName: (context)=> AllContent4(),
+          AllContent5.routeName: (context)=> AllContent5(),
+          English.routeName: (context) => English(),
+          AllContent6.routeName: (context)=> AllContent6(),
+          French.routeName: (context)=> French(),
+          AllContent7.routeName: (context)=> AllContent7(),
+          
+
         },
       ),
     );
